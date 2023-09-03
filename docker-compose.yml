@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  php:
+    image: local/php:apache2 # Make sure to run requirements.sh first (or use own image)
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/
