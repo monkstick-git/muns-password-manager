@@ -5,5 +5,28 @@ services:
     image: local/php:apache2 # Make sure to run requirements.sh first (or use own image)
     ports:
       - 80:80
+    env_file:
+      - .env
     volumes:
-      - ./:/var/www/html/
+      - ./app:/var/www/html/
+
+  #Mysql 8
+  db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

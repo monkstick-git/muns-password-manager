@@ -1,0 +1,4 @@
+RewriteEngine on
+
+# Rewrite URLs that don't end in anything to index.php
+#RewriteRule ^((?!index\.php).+)$ /index.php [L]
